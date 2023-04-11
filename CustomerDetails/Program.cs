@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//builder.Services.AddRazorPages();
 builder.Services.AddDbContext<CustomerDetailsContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CustomerDetailsContext") ?? throw new InvalidOperationException("Connection string 'AzureSenderAppContext' not found.")));
 builder.Services.AddRepositories();
@@ -31,7 +30,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Customers}/{action=Index}/{id?}");
-
-//app.MapRazorPages();
 
 app.Run();

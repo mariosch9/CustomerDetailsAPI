@@ -44,7 +44,7 @@ namespace CustomerDetails.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CustomerName,CustomerDescription")] Customers customer)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Email,Address")] Customers customer)
         {
             var exist = await _customersService.GetByIdAsync(customer.Id, log: false) != null;
             if (!exist)
@@ -77,7 +77,7 @@ namespace CustomerDetails.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CustomerName,CustomerDescription")] Customers customer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email,Address")] Customers customer)
         {
             if (id != customer.Id)
             {
